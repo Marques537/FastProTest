@@ -2,33 +2,31 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useState, useContext } from 'react';
 import { LayoutComponents } from '../../components/LayoutComponents'
 import StoreContext from '../../components/Store/Context';
-
-function login({user, password}) {
-  //request para a api retornando o token
-  return {token: '1234'};
-}
+import { createSession } from '../../services/api';
 
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { setToken } = useContext(StoreContext);
+  const { token, setToken } = useContext(StoreContext);
   const navigate = useNavigate();
 
+  const execLogin = async () => {
+    const response = await createSession({email,password});
 
+    setToken(response.data.token);
+    if (response.data.token) {
+      setEmail('');
+      setPassword('');
+      return navigate('/');
+     }
+    console.log('local storage',token)
+    alert('user or password invalid');
+  }  
   function onSubmit(event){
     event.preventDefault();
-    const { token } = login({email,password});
+    execLogin()
 
-    if (token) {
-      setToken(token);
-      console.log(token)
-      return navigate('/');
-    }
-
-    setEmail('');
-    setPassword('');
   }
-
   return (
     <LayoutComponents>
       <form onSubmit={onSubmit}className="login-form">

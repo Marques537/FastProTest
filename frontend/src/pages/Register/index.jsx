@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { LayoutComponents } from '../../components/LayoutComponents';
-import { alignProperty } from '@mui/material/styles/cssUtils';
+import { postUser } from '../../services/api';
+
 
 export const Register = () => {
   const [name, setName] = useState("");
@@ -21,32 +22,26 @@ export const Register = () => {
     }
   return true;
   }
-  
+  const SendUser = async () =>{
+    const response = await postUser({name, email, phoneNumber, password})
+    
+    if (response.data.user_id){
+      setName("");
+      setEmail("");
+      setPhone("");
+      setPassword("");
+      setRepeatPassword("");
+      alert("Register Sucessful");
+    }else if(response.data.message){
+      alert(response.data.message)
+    }
+  }
   function onSubmit(event){
     event.preventDefault();
-
-    const init = {
-      method: 'POST',
-      headers: {'content-Type': 'application/json'},
-      body: JSON.stringify({name, email, phoneNumber, password})
-    }
     if (validateFields()){
-      fetch('http://localhost:3333/cadastro', init).then((response) => response.json())
-      .then((response) => {
-        console.log(response);
-        console.log(init);
-        if (response.user_id){
-          setName("");
-          setEmail("");
-          setPhone("");
-          setPassword("");
-          setRepeatPassword("");
-          alert("Register Sucessful");
-        }
-      });
+        SendUser();
     }
-
-  }
+}
   return (
     <LayoutComponents>
       <form onSubmit={onSubmit}className="login-form">

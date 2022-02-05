@@ -5,7 +5,7 @@ class StarWarsCharactersController{
   async GetCharacters(request: Request, response: Response){
     const { page } = request.params;
     const apiResponse = await SwapiService.getByPage(Number(page));
-    return response.json(apiResponse.data);
+    return response.status(200).json(apiResponse.data);
   }
  
 }
