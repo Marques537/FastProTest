@@ -1,0 +1,162 @@
+@import "https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+.login-form{
+  width: 10
+}
+
+.login-title{
+  display: block;
+  font-size: 30px;
+  color: azure;
+
+  line-height: 1.2;
+  text-align: center;
+}
+
+.wrap-input{
+  width: 100%;
+  position: relative;
+  border-bottom: 2px solid #adadad;
+  margin-bottom: 37px;
+}
+
+.input{
+  font-size:15px;
+  color: #fff;
+  line-height: 1.2;
+  border: none;
+  display: block;
+
+  width: 100%;
+  height: 45px;
+
+  background-color: transparent;
+  padding: 0 5px;
+}
+
+.focus-input{
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  top: 0;
+  left: 0;
+
+  pointer-events: none;
+  color: #adadad
+}
+
+
+.focus-input::before{
+  content: " ";
+  display: block;
+  position: absolute;
+  bottom: -2;
+  left: 0;
+  width: 0;
+  height: 2px;
+
+  -webkit-transition: all 0.4s;
+  -o-transition: all a.4s;
+  -moz-transition: all 0.4s;
+
+  background: linear-gradient(to left, rgb(0, 102, 255) 0%, #2a9c7a);
+  background:  -moz-transition(to left, rgb(0, 102, 255) 0%, #2a9c7a);
+  background: -o-transition(to left, rgb(0, 102, 255) 0%, #2a9c7a);
+  background: -webkit-transition(to left, rgb(0, 102, 255) 0%, #2a9c7a);
+}
+
+.focus-input::after{
+  font-size: 15px;
+  color: #9999;
+  line-height: 1.2;
+
+  content: attr(data-placeholder);
+  display: block;
+  width: 100%;
+  position: absolute;
+  top: -25px;
+  left: 0px;
+
+  padding-left: 5px;
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+}
+
+.input:focus{
+  outline: 0;
+}
+
+.input:focus + .focus-input::after{
+  top: -50px;
+}
+
+.input:focus + .focus-input::before{
+  width: 100%;
+}
+
+.has-val + .focus-input::after{
+  top: -50px;
+}
+
+.container-login-form-btn {
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-bottom: 13px;
+}
+
+.login-form-btn{
+  font-size: 15px;
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  
+  line-height:1.2;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 50px;
+
+  background: linear-gradient(to left, rgb(0, 102, 255) 0%, #2a9c7a);
+  background:  -moz-transition(to left, rgb(0, 102, 255) 0%, #2a9c7a);
+  background: -o-transition(to left, rgb(0, 102, 255) 0%, #2a9c7a);
+  background: -webkit-transition(to left, rgb(0, 102, 255) 0%, #2a9c7a);
+}
+
+.login-form-btn:hover{
+  cursor: pointer;
+}
+
+.text-center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  margin-top: 50px;
+}
+
+.text1{
+  font-size: 14px;
+  color: #adadad;
+  line-height: 1.5;
+  text-decoration: none;
+  padding-right: 5px;
+}
+
+
+.text2{
+  font-size: 14px;
+  color: #6a7dfe;
+  line-height: 1.5;
+  text-decoration: none;
+}
