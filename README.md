@@ -10,6 +10,6 @@ Clone this repository and run next steps:
 
 ## Run Frontend
 
-### `cd backend`
+### `cd frontend`
 ### `npm install`
 ### `yarn start`
