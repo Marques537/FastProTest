@@ -1,3 +1,5 @@
+API and React app test for FastPro selective process
+
 ## Development setup
 
 Clone this repository and run next steps:
